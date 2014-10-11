@@ -1,0 +1,33 @@
+{
+  "name": "circular-serializer",
+  "version": "0.0.0",
+  "description": "Safe serialize and deserialize json objects, Date support, extensible custom types",
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/.bin/mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zerkalica/circular-serializer.git"
+  },
+  "keywords": [
+    "serialize",
+    "deserialize",
+    "stringify",
+    "parse",
+    "JSON"
+  ],
+  "author": "Sergey Yuferev <nexor@ya.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zerkalica/circular-serializer/issues"
+  },
+  "homepage": "https://github.com/zerkalica/circular-serializer",
+  "dependencies": {
+    "traverse": "^0.6.6"
+  },
+  "devDependencies": {
+    "chai": "^1.9.2",
+    "mocha": "^1.21.4"
+  }
+}
