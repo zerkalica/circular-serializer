@@ -1,10 +1,10 @@
-var cs = require('../lib/circular-serializer');
+var Serializer = require('../lib/circular-serializer');
 
 function MyType(name) {
   this.name = name;
 };
-
-cs.typeMap.MyType = {
+var typeMap = Object.create(Serializer.defaultTypeMap);
+typeMap.MyType = {
   detect: function (x) {
     return x instanceof MyType;
   },
@@ -15,6 +15,7 @@ cs.typeMap.MyType = {
     return new MyType(x.name);
   }
 };
+var cs = Serializer({typeMap: typeMap});
 
 var testObject = {
   k: [1, 2, 'rrr'],

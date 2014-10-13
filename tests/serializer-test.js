@@ -1,11 +1,12 @@
 var expect   = require('./test-helpers').expect;
-var serializer = require('../lib/circular-serializer');
+var Serializer = require('../lib/circular-serializer');
 
 describe('serializer', function () {
   function MyType(name) {
     this.name = name;
   };
-  serializer.typeMap.MyType = {
+  var typeMap = Object.create(Serializer.defaultTypeMap);
+  typeMap.MyType = {
     detect: function (x) {
       return x instanceof MyType;
     },
@@ -16,6 +17,7 @@ describe('serializer', function () {
       return new MyType(x.name);
     }
   };
+  var serializer = Serializer({typeMap: typeMap});
 
   var testObject = {
     k: [1, 2, 'rrr'],

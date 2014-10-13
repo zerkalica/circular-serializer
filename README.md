@@ -7,7 +7,7 @@ Circular safe, extensible, Date support
 ### Simple
 
 ``` javascript
-var cs = require('circular-serializer');
+var cs = require('circular-serializer')();
 
 var testObject = {
   k: [1, 2, 'rrr'],
@@ -31,13 +31,15 @@ console.log(cs.deserialize(string));
 ### Custom types
 
 ``` javascript
-var cs = require('circular-serializer');
+var csf = require('circular-serializer');
 
 function MyType(name) {
   this.name = name;
 };
 
-cs.typeMap.MyType = {
+var typeMap = Object.create(csf.defaultTypeMap);
+
+typeMap.MyType = {
   detect: function (x) {
     return x instanceof MyType;
   },
@@ -48,6 +50,7 @@ cs.typeMap.MyType = {
     return new MyType(x.name);
   }
 };
+var cs = csf({typeMap: typeMap});
 
 var testObject = {
   k: [1, 2, 'rrr'],
