@@ -33,7 +33,7 @@ describe('serializer', function () {
   var serializedTestArray = '[1,2,\"test\",{\"a\":1}]';
 
   describe('#serialize', function () {
-    var serialize = serializer.serialize;
+    var serialize = serializer.serialize.bind(serializer);
 
     it('should not serialize simple types', function () {
       expect(serialize(null)).to.be.equal(null);
@@ -58,7 +58,7 @@ describe('serializer', function () {
   });
 
   describe('#deserialize', function () {
-    var deserialize = serializer.deserialize;
+    var deserialize = serializer.deserialize.bind(serializer);
     it('should not deserialize simple types', function () {
       expect(deserialize(null)).to.be.equal(null);
       expect(deserialize(false)).to.be.equal(false);
