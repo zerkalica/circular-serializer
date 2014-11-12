@@ -22,12 +22,15 @@ describe('serializer', function () {
   var testObject = {
     k: [1, 2, 'rrr'],
     b: 'test',
+    n: null,
+    nn: NaN,
+    u: {v: undefined},
     my: new MyType('test'),
     c: new Date('2014-10-11T11:51:56.822Z')
   };
   testObject.d = testObject;
 
-  var serializedTestObject = '{\"k\":[1,2,\"rrr\"],\"b\":\"test\",\"my\":{\"@#csV\":{\"name\":\"test\"},\"@#csL\":\"MyType\"},\"c\":{\"@#csV\":\"2014-10-11T11:51:56.822Z\",\"@#csL\":\"Date\"},\"d\":\"[Circular#d]\"}';
+  var serializedTestObject = '{\"k\":[1,2,\"rrr\"],\"b\":\"test\",\"n\":null,\"nn\":{\"@#csV\":\".\",\"@#csL\":\"nan\"},\"u\":{\"v\":{\"@#csV\":\".\",\"@#csL\":\"undef\"}},\"my\":{\"@#csV\":{\"name\":\"test\"},\"@#csL\":\"MyType\"},\"c\":{\"@#csV\":\"2014-10-11T11:51:56.822Z\",\"@#csL\":\"Date\"},\"d\":\"[Circular#d]\"}';
 
   var testArray = [1, 2, 'test', {a: 1}];
   var serializedTestArray = '[1,2,\"test\",{\"a\":1}]';
